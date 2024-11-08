@@ -39,7 +39,7 @@ async def show_all_servers_command(interaction: discord.Interaction) -> None:
                 server_list.append(f"{server} (Not Running)")
 
         if server_list:
-            await interaction.followup.send(f"Servers:\n```\n" + "\n".join(server_list) + "\n```", ephemeral=True)
+            await interaction.followup.send("Servers:\n```\n" + "\n".join(server_list) + "\n```", ephemeral=True)
         else:
             await interaction.followup.send("No servers found.", ephemeral=True)
     except subprocess.CalledProcessError as e:
