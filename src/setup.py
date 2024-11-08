@@ -5,6 +5,7 @@ from commands.start_minecraft_server import start_minecraft_server_command
 from commands.close_minecraft_server import close_minecraft_server_command
 from commands.show_all_servers import show_all_servers_command
 from commands.update_server_properties import update_server_properties_command
+from commands.add_op import add_op_command
 
 def SetupCommands(tree):
     """
@@ -44,3 +45,9 @@ def SetupCommands(tree):
     @discord.app_commands.describe(value="Property value")
     async def _update_server_properties(interaction: discord.Integration, server_name: str, property_name: str, value: str) -> None:
         await update_server_properties_command(interaction, server_name, property_name, value)
+
+    @tree.command(name="add-op", description="Add OP")
+    @discord.app_commands.describe(server_name="Server name")
+    @discord.app_commands.describe(mcid="Minecraft User ID")
+    async def _add_op(interaction: discord.Integration, server_name: str, mcid: str) -> None:
+        await add_op_command(interaction, server_name, mcid)

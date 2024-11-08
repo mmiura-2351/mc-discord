@@ -13,6 +13,10 @@ def main():
     # Setup slash commands
     SetupCommands(tree)
 
+    @bot.event
+    async def on_ready():
+        print(f"Logged in as {bot.user.name} (ID: {bot.user.id})")
+
     # Start discord bot
     bot.run(os.getenv("DISCORD_TOKEN"))
 
